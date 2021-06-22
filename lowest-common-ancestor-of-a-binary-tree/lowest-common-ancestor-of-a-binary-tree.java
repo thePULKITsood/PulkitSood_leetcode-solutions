@@ -10,38 +10,32 @@
 class Solution {
     public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
         
-        ArrayList <TreeNode > list1 = new ArrayList<TreeNode>();
-        ArrayList <TreeNode > list2 = new ArrayList<TreeNode>();
+//         we think this in terms of one node 
         
-            nodetorootpath(root , p ,list1 );
+//         if that one node == null we return null 
+        if (root == null ) return null;
         
-            nodetorootpath(root , q ,list2 );
-        int i = list1.size()-1;
-        int j  = list2.size()-1;
+//         if the node == p or  q we retrurn the node and as p and q nodes are diff so we can use or 
+        if (root == p || root ==q) return root;
         
-        TreeNode LCA = null;
-        while (i >= 0 && j >=0){
-            if (list1.get(i) == list2.get(j)) LCA = list1.get(i);
-            
-            i--;j--;
-        }
-        return LCA;
+//         now we perform a search from the node which is we search the left subtree and the right subtree 
+//         they will have either of 2 values 
+//         - null - meaning we reached the leaf during recursion dfs and we did not find p or q so return null
         
-    }
-//      make a root ot node path and and then call if for both the nodes and then check from the left side for the common parent 
-    
-    public boolean nodetorootpath(TreeNode root , TreeNode p , ArrayList<TreeNode> ans ){
-        if (root == null) return false;
+//         if we have a node then we see that we found some value in the subtree 
         
-        if (root == p ){
-            ans.add(root);
-            return true;
-        }
-        boolean res = nodetorootpath (root.left  , p , ans )|| nodetorootpath(root.right , p , ans);
+//         now if both the left and right comes out to be some value then we got it it is the lca
+//         other wise if only one of themis a value and other is null we we return the value and this will be helpful fot the parent node 
         
-        if (res){
-            ans.add(root);
-        }
-        return res;
+        
+        TreeNode left =lowestCommonAncestor (root.left , p,q); 
+        TreeNode right =lowestCommonAncestor (root.right , p,q);
+        
+        if (left!=null && right != null )return root ; // this is the lca 
+        if (left == null && right == null ) return null ;
+        
+        if (left == null) return right;
+        else return left;
+        
     }
 }
