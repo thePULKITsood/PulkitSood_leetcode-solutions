@@ -14,31 +14,36 @@
  * }
  */
 class Solution {
-  public void swap(TreeNode a, TreeNode b) {
-    int tmp = a.val;
-    a.val = b.val;
-    b.val = tmp;
-  }
+     TreeNode a = null, b = null, prev = null;
 
-  public void recoverTree(TreeNode root) {
-    Deque<TreeNode> stack = new ArrayDeque();
-    TreeNode x = null, y = null, pred = null;
+    public boolean recoverTree_(TreeNode root) {
 
-    while (!stack.isEmpty() || root != null) {
-      while (root != null) {
-        stack.add(root);
-        root = root.left;
-      }
-      root = stack.removeLast();
-      if (pred != null && root.val < pred.val) {
-        y = root;
-        if (x == null) x = pred;
-        else break;
-      }
-      pred = root;
-      root = root.right;
+        if (root == null)
+            return true;
+
+        if (!recoverTree_(root.left))
+            return false;
+
+        if (prev != null && prev.val > root.val) {
+            b = root;
+            if (a == null)
+                a = prev;
+            else
+                return false;
+        }
+
+        prev = root;
+        if (!recoverTree_(root.right))
+            return false;
+
+        return true;
+
     }
 
-    swap(x, y);
-  }
+    public void recoverTree(TreeNode root) {
+        recoverTree_(root);
+        int temp = a.val;
+        a.val = b.val;
+        b.val = temp;
+    }
 }
