@@ -14,20 +14,30 @@
  * }
  */
 class Solution {
-    public boolean validate(TreeNode root, Integer low, Integer high) {
-        // Empty trees are valid BSTs.
-        if (root == null) {
-            return true;
-        }
-        // The current node's value must be between low and high.
-        if ((low != null && root.val <= low) || (high != null && root.val >= high)) {
-            return false;
-        }
-        // The left and right subtree must also be valid.
-        return validate(root.right, root.val, high) && validate(root.left, low, root.val);
-    }
-
+    Integer prev = null;
     public boolean isValidBST(TreeNode root) {
-        return validate(root, null, null);
+        
+        // approach 2 -- using inorder traversal 
+        
+        // when we traverse a bst the inorder traversal os always in increasing order we can take a prev node and check if the curr node is > that or not 
+            
+            // first do the left then do the middle then do the right 
+    
+        return validate(root);
     }
+    boolean validate(TreeNode root){
+        if (root == null) return true;
+        
+        if (! validate(root.left))return false;
+        
+//         left  - > root  -> right 
+if (prev !=null && root.val <= prev ) return false;
+        
+        prev = root.val;
+        
+        if(! validate(root.right)) return false;
+        return true;
+        
+    }
+    
 }
