@@ -14,15 +14,22 @@
  * }
  */
 class Solution {
-    
+    int result = 0;
     public int longestZigZag(TreeNode root) {
-        return dfs(root)[2];
+        dfs(root, true);
+        return result;
     }
-
-    private int[] dfs(TreeNode root) {
-        if (root == null) return new int[]{-1, -1, -1};
-        int[] left = dfs(root.left), right = dfs(root.right);
-        int res = Math.max(Math.max(left[1], right[0]) + 1, Math.max(left[2], right[2]));
-        return new int[]{left[1] + 1, right[0] + 1, res};
+    
+    public int dfs(TreeNode node, boolean isLeft){
+        if(node == null){
+            return 0;
+        }
+        //try start here
+        int l = dfs(node.left, false);
+        int r = dfs(node.right, true);
+        result = Math.max(result, l);
+        result = Math.max(result, r);
+        //return sum for parent
+        return 1 + (isLeft ? l : r);
     }
 }
