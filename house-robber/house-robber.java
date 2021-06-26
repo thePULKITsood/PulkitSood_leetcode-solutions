@@ -1,25 +1,33 @@
 class Solution {
-    public int rob(int[] nums) {
-        int N = nums.length;
-        if (N == 0) return 0;
-        
-        int yes[] = new int [N];
-        int no[] = new int [N];
-        
-        yes[N-1] = nums[N-1];
-        no[N-1] = 0;
-        
-        
-//         yes[N-2] = nums[N-2] + no [N-1];
-//         no[N-2] = yes[N-1];
-        
-        for (int index = N-2 ; index>=0 ; index -- ){
-            yes[index] = no[index + 1 ] + nums[index];
-            no[index] = Math.max(yes[index+ 1] , no[index + 1 ]);
-        }
-        return Math.max(yes[0] , no[0]);
-        
-    }
     
- 
+    public int rob(int[] nums) {
+        
+        int N = nums.length;
+        
+        // Special handling for empty array case.
+        if (N == 0) {
+            return 0;
+        }
+        
+        int robNext, robNextPlusOne;
+        
+        // Base case initializations.
+        robNextPlusOne = 0;
+        robNext= nums[N - 1];
+        
+        // DP table calculations. Note: we are not using any
+        // table here for storing values. Just using two
+        // variables will suffice.
+        for (int i = N - 2; i >= 0; --i) {
+            
+            // Same as the recursive solution.
+            int current = Math.max(robNext, robNextPlusOne + nums[i]);
+            
+            // Update the variables
+            robNextPlusOne = robNext;
+            robNext = current;
+        }
+        
+        return robNext;
+    }
 }
