@@ -32,6 +32,8 @@ public class Codec {
         
          String [] arr =  data.split(",");
         index = 0;
+        // al the difficuty was because of the static i need to make it 0 every time 
+        
     
         TreeNode ans = deserialize_(arr);
         return ans;
