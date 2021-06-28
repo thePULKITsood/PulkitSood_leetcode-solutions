@@ -33,11 +33,12 @@ class Solution {
         root.right =root.left;
            root.left =null;
       }
-       if (rightend!=null)
-       {
-       rightend.left =null;
-       rightend.right =null;
-       }
+       
+//        if (rightend!=null)
+//        {
+//        rightend.left =null;
+//        rightend.right =null;
+//        }
        
       
         
