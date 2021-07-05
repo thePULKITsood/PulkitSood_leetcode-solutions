@@ -1,31 +1,37 @@
 class Solution {
-    Integer memo[][] = null;
+    
     public int maxUncrossedLines(int[] nums1, int[] nums2) {
         int n = nums1.length ;
         int m = nums2.length ;
-        
-         memo = new Integer [n+1][m+1];
-        return func(0,0,nums1,nums2);
-    }
-    int func (int i , int j,int[] nums1, int[] nums2 )
-    {
-        
-        
-        if (i== nums1.length || j == nums2.length) return 0;
-        
-        if (memo[i][j] !=null) return memo[i][j];
-        
-        if (nums1[i] == nums2[j])
-            return memo[i][j] = 1 + func (i+1 , j+1 , nums1 , nums2);
-        
-        else {
+      
+        int dp [][] = new int [n+1][m+1];
+//         as i am thinking from traversing the array from the last to the frot in that way i must fill my dep from left ot right and from top to bottom thus i will fill my fp from left to right form top to bottom 
             
-            // int delboth  = func (i+1 , j+1 , nums1 , nums2 ,memo);
-            int del1 = func (i+1 , j , nums1 , nums2 );
-            int del2 = func (i , j+1 , nums1 , nums2 );
+//             ans i will think of the problem as going form  last to front 
             
-            return memo[i][j] = Math.max(del1 , del2);
-            // Math.max ( delboth ,
+        
+            for (int i = 0 ; i<= n ;i++){
+                
+            for (int j=0 ; j <= m ; j++){
+                
+                if (i==0 || j==0) 
+                {
+                dp[i][j]=0;
+                 
+                 continue;
+                }
+                
+                
+                
+                if (nums1[i-1]==nums2[j-1])
+                    dp[i][j] = 1+  dp[i-1][j-1];
+                
+                else 
+                   dp[i][j] = Math.max(dp[i-1][j], dp[i][j-1]);
+                
+            }
         }
+        return dp[n][m];
+       
     }
 }
