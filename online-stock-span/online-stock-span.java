@@ -4,35 +4,44 @@
 // next greater element on the left os to be found 
 class StockSpanner {
 
-    Stack<Integer> st;
-    Map <Integer,Integer>map; 
+    class pair {
+        int val;
+        int i ; 
+        pair (int val , int i ){
+            this.val=val;
+            this.i=i;
+        }
+    }
+    Stack<pair> st;
     int index ;
+    
     public StockSpanner() {
+        
         st = new Stack();
-        map = new HashMap();
         index = 1;
     }
     
     public int next(int price) {
         
-        map.put(price , index);
+      
         
-        while (!st.isEmpty() && st.peek()<= price )
+        while (!st.isEmpty() && st.peek().val <= price )
             st.pop();
         
         int ans = 0;
+        
         if (st.isEmpty())
             ans= index;
-        else {
-            int i = map.get(st.peek());
-            ans= index-i;
+        else
+        {
+            int in = st.peek().i;
+            ans= index-in;
         }
-        st.push(price);
-        index ++;
+        
+        st.push(new pair(price , index++));
+        
         return ans;
-        
-        
-        
+     
     }
 }
 
