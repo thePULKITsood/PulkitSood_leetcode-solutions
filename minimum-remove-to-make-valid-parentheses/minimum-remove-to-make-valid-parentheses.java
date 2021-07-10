@@ -11,12 +11,15 @@ class Solution {
                 sb.append(c);
             }
             else if ( c==')'){
+                
                 if (b!= 0){
                 sb.append(c);
                 b--;
                 }
             }
-            else {
+            
+            else 
+            {
                 sb.append(c);
                 
             }
