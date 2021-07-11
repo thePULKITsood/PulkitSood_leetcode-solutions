@@ -1,27 +1,35 @@
 class Solution {
     public int[][] merge(int[][] intervals) {
-        
-        Arrays.sort(intervals, (a,b)-> Integer.compare(a[0],b[0]));
+        Arrays.sort(intervals, (a,b) -> Integer.compare(a[0],b[0]));
         
         ArrayList<int[]> ans = new ArrayList();
         
-        int [] newi = intervals[0];
-        ans.add(newi);
-        
-        for (int [] i : intervals){
-        if (i[0]<=newi[1])
-            newi[1] = Math.max(newi[1],i[1]);
+        for (int[] i : intervals){
             
-            else{
-                newi = i;
-                ans.add(newi);
+            if (ans.size ()==0){
+                ans.add(i);
             }
             
-        }
+            else {
+                int previ[] = ans.get(ans.size()-1);
+                
+                 if (i[0] <= previ[1])
+                previ [1] = Math.max(i[1] , previ[1]);
+               
+                else 
+                    ans.add(i);
+                
+            }
+            }
         
-        return ans.toArray(new int [ans.size()][]);
+        return ans.toArray(new int[ans.size()][]);
+        
     }
 }
-//sort then the linear operation
 
-// nlogn + n
+// tricks in the interval questions 
+// 1. sort according to the starting points 
+// --
+    // using lambda expressions  or   comparator 
+//     we will use lambda expressions 
+    
