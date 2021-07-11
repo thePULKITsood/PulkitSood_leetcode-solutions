@@ -1,43 +1,31 @@
 class Solution {
     public int minMeetingRooms(int[][] intervals) {
+        //on the peak of priority q we have minimum ending time 
+        //thats all we need and not ot traverse and search all the elements 
         
-        Arrays.sort(intervals, (a,b)->Integer.compare(a[0],b[0]));
         
-        ArrayList<int[]> rooms = new ArrayList();
-        // rooms.add(intervals[0]);
-                  
-        for (int[] interval : intervals){
+        Arrays.sort (intervals, (a,b)-> Integer.compare(a[0],b[0]));
+        
+        PriorityQueue <Integer> pq = new PriorityQueue();
+//         as we are going to store only the ending time of each meeting 
+        int max = 0;
+        for (int [] interval: intervals){
             
-            boolean added = false;
-            if(rooms.size()==0)
-            {
-                rooms.add(interval);
-                continue;
-            }
-            for (int[]room :rooms)
-            {
-                if(interval[0]>=room[1]){
-                    room[1]=interval[1];
-                
-                added=true;
-                break;
+            if (pq.size()==0){
+                pq.add(interval[1]);
+            }else{
+                if (pq.peek()>interval[0])
+                    pq.add(interval[1]);
+                else{
+                    pq.remove();
+                        pq.add(interval[1]);
                 }
             }
-            if(!added)
-                rooms.add(interval);
+            max = Math.max(max,pq.size());
         }
-        return rooms.size();
-        
+        return max;
     }
 }
-// first we did mergin intervals now it is the opposite we need to find the numbner fo conference rooms 
-//if they dont overlap we do not need a conference room 
-
-//first allot a conference room to the first meeting 
-//then for seond check if it overlaps with the first if it does then give a new room 
-//for third check with first two 
-
-
-//if i sort them then my problem where some middle space is left in the meeting rooms gets over 
-
-// it is a n2 solution 
+// 1. sort 
+// 2. to find a new room i was using n2 method meaning comparing each room with the prev all roms 
+// 3. this time i will compare it with the smallest and only see that if it fits it or not 
