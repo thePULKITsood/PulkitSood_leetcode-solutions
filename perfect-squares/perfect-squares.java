@@ -1,25 +1,25 @@
 class Solution {
-    
+    int memo[];
     public int numSquares(int n) {
+        memo=new int[n+1];
+        return fun(n);
         
-        int dp[] = new int [n+1];
+    }
+    int fun (int num ){
+        if(memo[num]!=0)
+            return memo[num];
         
-        Arrays.fill(dp,Integer.MAX_VALUE);
+        if (num == 0)
+            return 0;
         
-        dp[0]=0;
-        //base case 
+        int min = Integer.MAX_VALUE;
         
-        for (int i=1 ; i<=n ; i++){
+        for (int i = 1 ; i*i <=num ; i++){
+                int ans = fun (num-(i*i)) ;
             
-            //for finding each value of the dp array 
-            //now to find the value of one cell 
-            
-            for (int j=1 ; j*j<=i ; j++)
-                
-                dp[i]= Math.min (dp[i] , dp[ i - j*j ]  + 1 );
-            
-        }
-        return dp[n];
+                min = Math.min(ans,min);
+            }
         
+        return memo[num]=min+1;
     }
 }
