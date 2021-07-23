@@ -16,6 +16,7 @@
 class Solution {
     int ans = 0;
     public int closestValue(TreeNode root, double target) {
+        
         double min =(int)1e9;
         close (root,target,min);
         return ans;
@@ -23,6 +24,7 @@ class Solution {
    void close(TreeNode root, double target,double min)
     {
         if (root==null)return;
+       
        double diff= Math.abs( target - (double) root.val  ) ;
        
         if (diff < min){
