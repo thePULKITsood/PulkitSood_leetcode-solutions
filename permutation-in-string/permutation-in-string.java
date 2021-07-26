@@ -18,6 +18,8 @@ public class Solution {
             
             s2map[s2.charAt(i) - 'a']++;
             s2map[s2.charAt(i-s1.length()) - 'a']--;
+            // add one and remove one  and keep doing it again and agiain 
+            
         }
         return matches(s1map, s2map);
     }
