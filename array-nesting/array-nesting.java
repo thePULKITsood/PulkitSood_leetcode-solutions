@@ -1,28 +1,18 @@
-class Solution {
+public class Solution {
     public int arrayNesting(int[] nums) {
-        int n = nums.length;
-        int max=0;
-        int ans [] = new int [n];
-        Set<Integer> set = new HashSet();
-        for (int i=0;i<n;i++){
-            int num=0;
-            int j =i;
-            if(ans[j]==0){
-                while(!set.contains(j))
-                {       
-                num++;
-                set.add(j);
-                j=nums[j];
+        int res = 0;
+        for (int i = 0; i < nums.length; i++) {
+            if (nums[i] != Integer.MAX_VALUE) {
+                int start = nums[i], count = 0;
+                while (nums[start] != Integer.MAX_VALUE) {
+                    int temp = start;
+                    start = nums[start];
+                    count++;
+                    nums[temp] = Integer.MAX_VALUE;
                 }
-                
-                for(int index : set){
-                    ans[index]=num;
-                }
-                max=Math.max(max,num);
-                num=0;
-                set=new HashSet();
+                res = Math.max(res, count);
             }
         }
-        return max;
+        return res;
     }
 }
