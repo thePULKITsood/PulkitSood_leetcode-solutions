@@ -1,36 +1,29 @@
 class Solution {
     public int minMoves2(int[] nums) {
-        Arrays.sort(nums);
-    
-//         long sum =0;
+           Arrays.sort(nums);
+            int n = nums.length;
         
-//         for (int i:nums)
-//         sum+=i;
-        
-        int n = nums.length;
-        // sum/=n;
-        int med = nums[n/2];
-        // int ans=0;
-        int ans2=0;
-        for (int i:nums){
-            // ans+=Math.abs(sum-i);
-            ans2+=Math.abs(med-i);
-                
+        int i=0;
+        int j=n-1;
+        int ans=0;
+        while (i<j){
+            ans+=nums[j]-nums[i];
+            j--;i++;
         }
-        // return Math.min(ans,ans2);
-        return ans2;
+        return ans;
+        
     }
 }
 /*
-// 1 sort 
-// then as we watn to bring all the elements to equal point we 
-//increase the first element and decrease the last element so theat theya re at equal point 
-// example 1 2 9 10 
-5 4 3 4 
-// 1 -> 5  = 4 
-// 10 -> 5  = 5 
-//     total inc decrease is equal to 10 -1 
+00168
 
-1 2 6 9 10 
-    
-    */
+we have to make 0 nad 8 equal for that we will add x to zero and subtract y from 8 
+
+o+x=8-y 
+so they become equal
+what we can do is we need the number of steps which is equal to x+y to get that we can do thos 
+x+y = 8-0
+so basically to get x+y we will subtract the values and get the result 
+
+
+*/
