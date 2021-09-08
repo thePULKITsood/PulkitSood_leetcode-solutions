@@ -2,27 +2,32 @@ class Solution {
     public int minTotalDistance(int[][] grid) {
         int n=grid.length;
         int m = grid[0].length;
-        ArrayList<int[]> ones = new ArrayList();
+        ArrayList<Integer> rows = new ArrayList();
+        ArrayList<Integer> cols = new ArrayList();
         for (int i=0;i<n;i++){
             for (int j=0;j<m;j++){
                 if(grid[i][j]==1)
-                    ones.add(new int[]{i,j});
+                rows.add(i);
             }
         }
-        int min=Integer.MAX_VALUE;
-        for (int i=0;i<n;i++){
-            for (int j=0;j<m;j++){
-                int dis =0;
-                for (int one[] : ones){
-                    int a=Math.abs(i-one[0])+Math.abs(j-one[1]);
-                    dis+=a;
-                }
-                min=Math.min(dis,min);
-                
+        for (int i=0;i<m;i++){
+            for (int j=0;j<n;j++){
+                if(grid[j][i]==1)
+                  cols.add(i);
             }
         }
-        return min;
         
-        
+       int row = rows.get(rows.size() / 2);
+       int col = cols.get(cols.size() / 2);
+        return dis(rows,row)+dis(cols,col);
     }
+    int dis(ArrayList<Integer> list, int med){
+        int ans=0;
+        for (int p : list)
+            ans+=Math.abs(med-p);
+        return ans;
+    }
+        
+        
+    
 }
