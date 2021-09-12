@@ -1,12 +1,12 @@
 class Solution {
     public boolean carPooling(int[][] trips, int capacity) {
-        int time [] = new int [10001];
+        int time [] = new int [1001];
         
         for (int t [] : trips){
             
             time[t[1]]+= t[0];
             time[t[2]]-= t[0];
-            
+        }
             int sum=0;
             for (int i : time){
                 sum+= i;
@@ -14,7 +14,7 @@ class Solution {
                 if(sum> capacity)
                     return false;
             }
-        }
+        
         return true;
         
     }
