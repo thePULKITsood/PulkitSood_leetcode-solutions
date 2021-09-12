@@ -1,20 +1,29 @@
 class Solution {
     public void wiggleSort(int[] nums) {
-        Arrays.sort(nums);
+        
         int n=nums.length;
-        for (int i=0;i<n;i++){
-            if(i%2==1)
-            {
-                //swap odd and at i+1
-                // if not present do nothing
-                if(i+1<n){
-                    int temp = nums[i+1];
-                    nums[i+1]=nums[i];
-                    nums[i]=temp;
-                }
+        for (int i=0;i<n-1;i++){
+            if (i%2==0){
+                //even;
+                if(nums[i]>nums[i+1])
+                    swap(i,i+1,nums);
+            }
+            else {
+                if(nums[i]<nums[i+1])
+                    swap(i,i+1,nums);
+                
             }
         }
+    
+      
+            
+        }
         
+    
+   public void swap ( int i , int j , int [] nums){
+                   int temp = nums[i];
+                    nums[i]=nums[j];
+                    nums[j]=temp;
     }
 }
 /*
