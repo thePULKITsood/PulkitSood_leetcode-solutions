@@ -1,5 +1,7 @@
 class Solution {
     public void sortColors(int[] nums) {
+        Arrays.sort(nums);
+        /*
 //         we will keep pointers i j and k 
         int n = nums.length;
         
@@ -31,7 +33,7 @@ class Solution {
                 k--;
             }
         }
-        
+        */
         
     }
 }
