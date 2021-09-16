@@ -1,33 +1,29 @@
 class Solution {
     public int lengthOfLIS(int[] nums) {
-        
         int n = nums.length;
-        int dp [] =new int [n];
-           int omax = 1;
-        for (int i = 0 ; i < n ; i++){
-            
-            int max =1 ;
-            
-            for (int j=i-1;j>=0;j--){
-                
-                if (nums[i]>nums[j]  ){
-                    
-                    max = Math.max(dp[j] + 1 , max);
-                    
-                }
+        ArrayList<Integer> ans = new ArrayList();
+        ans.add(nums[0]);
+        for (int i=1;i<n;i++){
+            if(nums[i]>ans.get(ans.size()-1)){
+                ans.add(nums[i]);
             }
-            dp[i]=max;
-            if (dp[i] > omax)
-                omax = dp[i];
+            else {
+                //do a binary search and find the element just bigger than or equal to this one
+                int j = search(ans,nums[i]);
+                ans.set(j,nums[i]);
+            }
         }
-     
-       
-        return omax;
+        return ans.size();
+    }
+    int search(ArrayList<Integer> ans , int x){
+        int left=0;
+         int right= ans.size()-1;
+        while (left<right){
+            int mid = (left+right)/2;
+            if(ans.get(mid)==x)return mid;
+            else if (ans.get(mid)<x) left = mid+1;
+            else right =mid;
+        }
+        return left;
     }
 }
-
-// for each point  i will store the value of the longest inc subsequence that ends on that point 
-
-// for a new point i will traverse all its left parts and if the point is valid  i will check my max and update my max accordinglt and 
-
-// n2 solution 
