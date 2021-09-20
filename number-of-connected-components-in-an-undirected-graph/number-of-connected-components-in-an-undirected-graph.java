@@ -1,35 +1,27 @@
 class Solution {
-    int parent[];
-    int count;
     public int countComponents(int n, int[][] edges) {
-         parent = new int [n];
-        count =n;
-        for (int i=0;i<n;i++)
-            parent[i]=i;
+        int[] parent = new int[n];
         
-        for (int e[]:edges){
-            union(e[0],e[1]);
-        }
-        // Set<Integer> set = new HashSet();
-        // for (int i:parent)
-        //     set.add(i);
-        // return set.size();
-        return count;
-            
-    }
-    public int findparent(int a){
-        if(parent[a]==a)return a;
-        return parent[a]=findparent(parent[a]);
-    }
-    public void union(int a , int b){
-        int pa = findparent (a);
-        int pb = findparent (b);
+        for (int i = 0; i < n; i++) 
+            parent[i] = i;
+           
         
-        if(pa!=pb){
-            parent[pa]=pb;
-            // parent[pb]=pb;
-            count--;
+        int components = n;
+        for (int[] e : edges) {
+            int p1 = findParent(parent, e[0]);
+            int p2 = findParent(parent, e[1]);
+            if (p1 != p2) {
+                
+                 parent[p1] = p2;
+                 components--;
+            }
         }
-        // count--;
+    
+        return components;
+    }
+
+    private int findParent(int[] parent, int i) {
+        if (i == parent[i]) return i;
+        return parent[i] = findParent(parent, parent[i]); // Path compression
     }
 }
