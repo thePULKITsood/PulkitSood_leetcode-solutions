@@ -1,25 +1,26 @@
 class Solution {
-    public int findCircleNum(int[][] graph ) {
-//          1 . make a graph
-        int n = graph.length;
-        int count = 0;
-        boolean visited [] = new boolean [n];
-        for (int i = 0 ;i< n ;i++){
-            if (visited[i] == false ){
-                count += dfs (i,graph,visited,n);
+    public int findCircleNum(int[][] isConnected) {
+        int n = isConnected.length;
+        int parent [] = new int [n];
+        for (int i=0;i<n;i++)parent[i]=i;
+        int ans =n;
+        for (int i=0;i<n;i++){
+            for (int j=0;j<n;j++){
+                if(i != j && isConnected[i][j]==1){
+                    int pi = find (parent,i);
+                    int pj = find (parent,j);
+                    if(pi!= pj){
+                        parent [pi]=pj;
+                        ans--;
+                    }
+                }
             }
         }
-        return count ;
-        
+        return ans;
         
     }
-    int dfs (int i ,int [][]graph,boolean []visited,int n ){
-        visited[i] = true;
-        for (int j = 0;j< n;j++){
-            if (graph[i][j] == 1 && visited[j]==false ){
-                dfs(j,graph,visited,n);
-            }
-        }
-        return 1 ;
+    public int find (int parent [] , int i){
+        if(parent[i]==i)return i;
+        return parent[i]=find(parent,parent[i]);
     }
 }
