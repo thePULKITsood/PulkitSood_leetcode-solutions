@@ -1,11 +1,11 @@
 class Solution {
-    int n , m ;
+     int n , m ;
     Integer memo[][];
     public int numDistinct(String s, String t) {
-        n = s.length();
+          n = s.length();
         m = t.length ();
         memo = new Integer [n][m];
-        
+       
         return solve (s,t,0,0);
         // return memo[n-1][m-1];
     
