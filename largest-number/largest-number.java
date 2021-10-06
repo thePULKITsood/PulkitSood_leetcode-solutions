@@ -9,6 +9,10 @@ class Solution {
             long l1 = Long.parseLong(a+b);
             long l2 = Long.parseLong(b+a);
             
+            // here if i want no change i return -1 pr negative 
+            
+         // and if i want the swap i return positive 
+            
             if(l1>l2)
                 return -1;
             else if(l2>l1)
