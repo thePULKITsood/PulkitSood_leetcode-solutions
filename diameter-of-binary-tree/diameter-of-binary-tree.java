@@ -13,35 +13,28 @@
  *     }
  * }
  */
-class Solution 
-{
-    int overdia = Integer.MIN_VALUE;  // not Math. but Integer.
-  
-    public int diameterOfBinaryTree(TreeNode root) 
-    {
-        d (root);
-        return overdia;   
+class Solution {  int max = 0;
+    public int diameterOfBinaryTree(TreeNode root) {
+      
+        if (root == null )return max;
+        func(root);
+        return max;
+        
+        
     }
-        
-    public int d (TreeNode root)
-    {
-        
-            if (root == null)
-        {
-            return 0 ;
-        }
-        
-        int left = d (root.left);
-        int right = d(root.right);
-        
-        int mydia = left+right ;
-        
-        overdia = Math.max(mydia,overdia);
-        
     
-        return Math.max(left,right) + 1 ;
-   }
-}
+    int  func(TreeNode root ){
+        
+        if (root == null) return -1;
+        
+        int lh = func(root.left);
+        int rh = func(root.right);
+                
+        int mydia = lh + rh + 2;
+        max = Math.max(mydia , max);
+        
+        return Math.max(lh,rh)+1;  
+//         i am returning my length
 
-    
-    
+    }
+}
