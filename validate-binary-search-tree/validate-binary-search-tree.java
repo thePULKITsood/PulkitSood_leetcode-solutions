@@ -16,28 +16,18 @@
 class Solution {
     Integer prev = null;
     public boolean isValidBST(TreeNode root) {
+        return valid(root);
         
-        // approach 2 -- using inorder traversal 
-        
-        // when we traverse a bst the inorder traversal os always in increasing order we can take a prev node and check if the curr node is > that or not 
-            
-            // first do the left then do the middle then do the right 
-    
-        return validate(root);
     }
-    boolean validate(TreeNode root){
-        if (root == null) return true;
+    boolean valid (TreeNode root){
+        if(root==null)return true;
         
-        if (! validate(root.left))return false;
+        if(!valid (root.left)) return false;
         
-//         left  - > root  -> right 
-if (prev !=null && root.val <= prev ) return false;
+        if(prev!= null && root.val<=prev) return false;
         
         prev = root.val;
         
-        if(! validate(root.right)) return false;
-        return true;
-        
+        return valid(root.right);
     }
-    
 }
