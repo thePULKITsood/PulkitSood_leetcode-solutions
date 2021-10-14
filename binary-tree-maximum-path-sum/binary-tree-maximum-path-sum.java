@@ -44,16 +44,36 @@ class Solution {
     }
     int help (TreeNode root){
         if (root== null ) return -(int)1e9;
+        
         int leftToSomeNodeMaxPathSum = help(root.left);
+        
         int rightToSomeNodeMaxPathSum = help(root.right);
+        
         int maxsuumtillrootincludingit = Math.max(leftToSomeNodeMaxPathSum,rightToSomeNodeMaxPathSum) + root.val;
+        
         //max of 4 things 
-        maxNTN =  Math.max(Math.max(maxNTN ,maxsuumtillrootincludingit ) , Math.max(root.val , rightToSomeNodeMaxPathSum + leftToSomeNodeMaxPathSum +root.val) );
+        
+        maxNTN =  Math.max(
+            Math.max(maxNTN ,maxsuumtillrootincludingit ) ,
+            Math.max(root.val , rightToSomeNodeMaxPathSum + leftToSomeNodeMaxPathSum +root.val) 
+        );
+        
         return (Math.max(maxsuumtillrootincludingit,root.val));
         
         
     }
 }
+
+
+// 1. root + left + right 
+
+// 2. root + (max of left,right )
+    
+// 3. only root 
+
+// and the max that has been found till now 
+// meaning the max below the root will be stored in a global variable 
+
 
 
 
