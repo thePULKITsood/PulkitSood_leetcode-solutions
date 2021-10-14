@@ -14,7 +14,7 @@ class Solution {
         
            
                 min =Math.min(min,prices[i]);
-            
+           if (min!=prices[i]) 
                 profit = Math.max(profit, prices[i] - min);
             
         }
