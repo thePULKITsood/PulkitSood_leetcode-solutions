@@ -13,9 +13,12 @@ class Solution {
         
 //          here the only trick is that we must make our answer by using the  
 //          add first technique so that we dont have to reverse our answer 
-       ListNode head =new ListNode (0) ;
+        
+        ListNode head =new ListNode (0) ;
         ListNode prev = head;
+        
         int carry = 0;
+        
         while (l1!=null || l2!=null)
         {
             int x1 = (l1!=null ?l1.val : 0 );
