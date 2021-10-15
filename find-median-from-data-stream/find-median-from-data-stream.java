@@ -15,10 +15,13 @@ class MedianFinder {
     
     public void addNum(int num) {
         left.add(num);
-        right.add(left.remove());
-        if(right.size()>left.size())
-            left.add(right.remove());
+        if(left.size()-right.size()>1)
+           right.add(left.remove());
         
+        else if(left.size()!=0 && right.size()!=0 && (left.peek()>right.peek())){
+            left.add(right.remove());
+            right.add(left.remove());
+        }
         
         
         
