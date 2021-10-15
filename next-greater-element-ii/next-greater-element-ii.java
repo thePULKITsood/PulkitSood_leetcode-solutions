@@ -17,16 +17,18 @@ class Solution {
         for (int i = 0 ;i < 2*n ; i++ ){
             int idx = i%n;
             
+       
+            //here we store indexes as in another question we did hashmap so we did not need indexes and now we need indexes 
+            
             while (!st.isEmpty() && num[st.peek()]< num[idx]) 
                 ans[st.pop()] = num[idx];
             
-//             if (num[st.peek()] == num[idx])
-//                 ans[]
+//             
             st.push(idx);
             
         }
         return ans;
             
-        
+//         dhyan nal think 
     }
 }
