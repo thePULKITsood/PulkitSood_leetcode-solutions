@@ -33,6 +33,7 @@ class Solution {
                 }
                 
             }
+            // if(q.size()>0)
             dis++;
         }
         return dis-1;
