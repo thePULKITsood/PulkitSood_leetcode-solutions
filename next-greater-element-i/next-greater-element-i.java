@@ -1,30 +1,34 @@
 class Solution {
     public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+        Stack<Integer> st = new Stack ();
         
-        Map <Integer,Integer> map = new HashMap();
-        Stack<Integer> stack = new Stack();
         int n = nums2.length;
+        int ans [] = new int [n];
         
-       
+        Arrays.fill(ans,-1);
         
-        for (int i = n-1 ; i>=0 ; i--){
-            // -  ans + 
+        for (int i = 0 ; i < n ; i++)
+        {
+            while (! st.isEmpty() && nums2[st.peek()] < nums2[i] )
+                ans[st.pop()] = i;
             
-            while (!stack.isEmpty() &&  stack.peek()< nums2[i])
-                stack.pop();
+            st.push(i);
             
-            map.put(nums2[i] , stack.size() == 0 ? -1 : stack.peek() );
-            
-            stack.push(nums2[i]);
         }
         
-        int ans[] = new int [nums1.length];
-        
-        for (int i = 0 ; i < nums1.length ; i++){
-            ans[i] = map.get(nums1[i]);
+        Map<Integer, Integer> map = new HashMap() ;
+        for (int i = 0 ; i< n ; i++){
+            map.put(nums2[i],ans[i]==-1 ? -1 : nums2[ans[i]]);
         }
-        return ans;
+        int ret[] = new int [nums1.length];
+        for (int i = 0; i<nums1.length ; i++){
+            ret[i] = map.get(nums1[i]);
+            
+        }
+        return ret;
+            
         
     }
 }
-// we can either fill the stack going from right to left more intuitive or from left ot right 
+// just find each ngr for the full array 2 then return the as array buld using hashmap 
+
