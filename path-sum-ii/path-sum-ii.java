@@ -26,24 +26,22 @@ class Solution {
     
  void help (TreeNode root, int s ,List<Integer> mini ){
      
-     if (root == null) return ;
-     
-     if (root.left == null && root.right == null && s == root.val)
-     {
-         //means i have found what i was looking for 
-             mini.add(root.val);
-             ans.add(new ArrayList<Integer>(mini));
-             mini.remove(mini.size()-1);
-      return;
+     if (root == null) return;
+ 
+    
+     if ( s == root.val && root.left==null && root.right==null)
+         
+     {   mini.add(root.val);
+         ans.add(       new ArrayList<Integer>  (mini)    );
+         mini.remove(mini.size()-1);
+         return;
      }
      
-// pre add post delete after every child and back track 
+    // pre add post delete after every child and back track 
      mini.add(root.val);
-     
 //      call children 
      
      help(root.left , s - root.val , mini);
-     
      help(root.right , s - root.val , mini);
      
      mini.remove(mini.size()-1);
