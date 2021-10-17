@@ -9,7 +9,7 @@ class Solution {
         
         StringBuilder sb = new StringBuilder ();
       
-        sb.append( func(thou, "M", "", ""));  
+        sb.append(func(thou, "M", "", ""));  
         sb.append(func(hund, "C", "D", "M")); 
         sb.append(func(ten, "X", "L", "C"));
         sb.append( func(one, "I", "V", "X"));
