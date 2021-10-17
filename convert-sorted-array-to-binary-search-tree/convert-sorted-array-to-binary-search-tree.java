@@ -25,8 +25,9 @@ class Solution {
         int mid = left + (right - left )/2;
         
         TreeNode root = new TreeNode (nums[mid]);
+        root.right = convert (nums,mid+1 , right );
         root.left  = convert (nums , left , mid-1);
-            root.right = convert (nums,mid+1 , right );
+            
             
             return root;
     }
