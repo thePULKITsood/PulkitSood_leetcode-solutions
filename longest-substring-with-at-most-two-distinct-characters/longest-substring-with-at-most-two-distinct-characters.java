@@ -2,6 +2,7 @@ class Solution {
     public int lengthOfLongestSubstringTwoDistinct(String s) {
         int left =0;
         int right  = 0;
+        
         int n = s.length();
         int max=0;
         HashMap<Character,Integer> map = new HashMap();
@@ -11,11 +12,11 @@ class Solution {
             
             map.put(s.charAt(right),right);
               
-              while (map.size()>2)
+              if(map.size()==3)
               {
-                  left = Collections.min(map.values());
-                  map.remove(s.charAt(left));
-                  left ++;
+                  int del = Collections.min(map.values());
+                  map.remove(s.charAt(del));
+                  left=del +1;
               }
            
             right ++;
