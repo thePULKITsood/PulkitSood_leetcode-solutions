@@ -1,4 +1,16 @@
 class Solution {
+    
+    // make a array from 1to n 
+    // loop i  from 2 to sqrt(n)
+    // for each i loop from i*i to n
+    
+    
+    
+//     Questions 
+//         1. why sqrt(n)
+//         2. why i start form i*i
+        
+    
     public int countPrimes(int n) {
         boolean isPrime [] = new boolean [n];
         
@@ -9,9 +21,8 @@ class Solution {
        {
            if (isPrime[i])
            {
-               for (int j = i+i ; j<n ; j += i)
+               for (int j = i*i ; j<n ; j += i)
                {
-                   
                    isPrime[j] = false;
                }
            }
