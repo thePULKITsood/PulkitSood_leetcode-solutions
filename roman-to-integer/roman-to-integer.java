@@ -21,9 +21,12 @@ class Solution {
             {
                 num -= st.pop();
             }
+            
             st.push(num);
         }
+        
         int sum =0;
+        
         while(!st.isEmpty())
             sum+=st.pop();
         
@@ -31,7 +34,3 @@ class Solution {
     }
 }
 
-// basically stack 
-
-// put in stack 
-// when putting see if the number i am going to put is > top if yes pop the top sub  it and put the thing on the stack 
