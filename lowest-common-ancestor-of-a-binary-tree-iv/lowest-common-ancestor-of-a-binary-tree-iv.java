@@ -8,22 +8,29 @@
  * }
  */
 class Solution {
-  HashSet<Integer> set = new HashSet<>();
+    TreeNode lca = null;
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
+        Set<Integer> targetNodes = new HashSet<>();
+        for(TreeNode node : nodes) {
+            targetNodes.add(node.val);
+        }
+        helper(root, targetNodes);
+        return lca;
+    }
     
-public TreeNode lowestCommonAncestor(TreeNode root, TreeNode[] nodes) {
-	for (TreeNode n : nodes) set.add(n.val);
-	return traverse(root);
-}
-
-public TreeNode traverse(TreeNode node) {
-	if (node == null) return null;
-	if (set.contains(node.val)) return node;
-	TreeNode left = traverse(node.left);
-	TreeNode right = traverse(node.right);
-	if (left != null && right != null) return node;
-	if (left != null) return left;
-	return right;
-}
+    int helper(TreeNode root, Set<Integer> nodes) {
+        if(root == null) return 0;
+        int leftCount = helper(root.left, nodes);
+        int rightCount = helper(root.right, nodes);
+        int foundCount = leftCount + rightCount;
+        if(nodes.contains(root.val)) {
+            foundCount++;
+        }
+        if(foundCount == nodes.size() && lca == null) {
+            lca = root;
+        }
+        
+        return foundCount;
+    }
+}   
     
-    
-}
