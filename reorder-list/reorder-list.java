@@ -33,7 +33,7 @@ class Solution {
         while (c2!=null)
         {//backup 
             
-            f1 = c1.next;
+            f1=c1.next;
             f2=c2.next;
             
             // links 
