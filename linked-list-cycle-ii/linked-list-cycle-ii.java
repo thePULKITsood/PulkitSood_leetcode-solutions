@@ -25,12 +25,12 @@ public class Solution {
         ListNode slow =head;
         ListNode fast=intersect ;
         
-        slow =head;
+       
         while (slow!=fast){
             slow=slow.next;
             fast=fast.next;
         }
-        return fast;
+        return slow;
     }
     ListNode getIntersect (ListNode head){
         ListNode slow =head;
@@ -40,7 +40,7 @@ public class Solution {
             fast=fast.next.next;
             
             if(slow==fast)
-                return fast;
+                return slow;
         }
         return null;
         
