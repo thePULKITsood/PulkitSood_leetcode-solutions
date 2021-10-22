@@ -1,5 +1,5 @@
 class Solution {
-    public String frequencySort(String s) {
+    public String frequencySort (String s) {
            StringBuilder sb = new StringBuilder();
         
         if(s==null || s.length()==0)
