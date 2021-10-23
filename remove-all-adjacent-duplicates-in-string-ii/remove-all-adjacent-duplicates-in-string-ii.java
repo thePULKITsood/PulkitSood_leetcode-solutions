@@ -19,9 +19,9 @@ class Solution {
                 st.push(new pair (ch , 1 ) );
             }
             else if (st.peek().c == ch){
-                
-                st.peek().count ++;
-                if (st.peek().count == k)
+                st.peek().count+=1;
+             
+                if (st.peek().count  == k)
                     st.pop();
             }
             
