@@ -5,16 +5,23 @@ class Solution {
         int ans =0;
         for (int i=0;i<r;i++){
             for (int j=0;j<c;j++){
+                // initialising top row and left column 
+                
                 if(i==0||j==0){
                     ans+=matrix[i][j];
               }
+                
                 else if(matrix[i][j]==1){
+               
                     int left = matrix[i][j-1];
                     int top  = matrix[i-1][j]; 
                     int diag  = matrix[i-1][j-1];
+                    
                     int min = Math.min(diag,Math.min(left,top));
+                    
                     matrix[i][j]+=min;
                     ans+= matrix[i][j];
+                
                 }
             }
         }
