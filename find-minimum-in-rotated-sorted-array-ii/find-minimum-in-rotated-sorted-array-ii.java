@@ -28,6 +28,7 @@ class Solution {
                 low = mid +1 ;
             else 
                 high -=1;
+            // if mid and high are equal high = mid-1
             
         }
         return nums[low];
