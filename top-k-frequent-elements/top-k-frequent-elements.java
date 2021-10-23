@@ -16,18 +16,20 @@ class Solution {
           count.put(n, count.getOrDefault(n, 0) + 1);
         }
         
-        PriorityQueue<Integer> heap = new PriorityQueue((a,b)-> count.get(b) - count.get(a));
+        PriorityQueue<Integer> heap = new PriorityQueue((a,b)-> count.get(a) - count.get(b));
         
-        for (int n : count.keySet())
+        for (int n : count.keySet()){
                heap.add(n);
+        if (heap.size() > k) heap.poll();  
+        }
         
         
         int ans[] = new int [k];
-        int i = 0;
-        while (k>0){
+        int i = k-1;
+        while (i>=0){
         ans[i] = heap.remove();
-            k--;
-            i++;
+            
+            i--;
             
         }
         return ans;
