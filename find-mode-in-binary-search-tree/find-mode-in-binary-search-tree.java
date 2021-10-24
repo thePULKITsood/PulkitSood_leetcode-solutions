@@ -33,7 +33,12 @@ public class Solution {
     
     private void traverse(TreeNode root, List<Integer> list) {
         if (root == null) return;
+        // this will work as we are going to the left so it is 
+        //L N R traversal 
+        // so it always compare them in increasing order 
+        
         traverse(root.left, list);
+        
         if (prev != null) {
             if (root.val == prev)
                 count++;
