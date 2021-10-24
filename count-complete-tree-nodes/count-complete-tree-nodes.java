@@ -18,21 +18,30 @@ class Solution {
     public int countNodes(TreeNode root) {
         if(root==null) return 0;
         
-        int height =1 ;
+        int heightleft =1 ;
+        int heightright =1 ;
         
         TreeNode left = root.left;
         TreeNode right = root.right;
         
-        while (left!=null && right !=null){
-            height ++;
+        while (left!=null){
+            heightleft++;
             left=left.left;
-            right = right .right;
+        }
+        
+        while (right!=null){
+            heightright++;
+            right=right.right;
+        }
+        
+        if(heightleft==heightright){
             
+          // they have same height so we can use the height formulae 
+         //this is a complete binary tree ! 
+            
+            return (int) Math.pow(2,heightleft)-1;
         }
-        if(left==null && right ==null){
-            // they have same height so we can use the height formulae 
-            return (int) Math.pow(2,height)-1;
-        }
+        
         //heights not equal -> so we will find the size of left and right and add +1
         return 1+ countNodes(root.left )+countNodes(root.right);
         
