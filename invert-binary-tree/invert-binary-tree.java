@@ -15,14 +15,19 @@
  */
 class Solution {
     public TreeNode invertTree(TreeNode root) {
-        if (root == null) return root ;
-        if (root.left!=null)invertTree(root.left);
-        if (root.right!=null)invertTree(root.right);
-        
-        TreeNode temp = root.left;
-        root.left = root.right;
-        root.right = temp; 
-        
+        if(root==null)return root;
+        Queue<TreeNode> q= new LinkedList();
+        q.add(root);
+        while (!q.isEmpty()){
+            TreeNode current = q.remove();
+            TreeNode temp = current.left;
+            current.left = current.right;
+            current.right = temp;
+            if (current.left != null) q.add(current.left);
+            if (current.right != null) q.add(current.right);
+            
+        }
         return root;
+        
     }
 }
