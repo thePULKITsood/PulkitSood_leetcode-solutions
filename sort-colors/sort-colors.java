@@ -1,7 +1,7 @@
 class Solution {
     public void sortColors(int[] nums) {
         Arrays.sort(nums);
-        /*
+        
 //         we will keep pointers i j and k 
         int n = nums.length;
         
@@ -20,10 +20,8 @@ class Solution {
                 //swap i and j 
                 // then i ++ j++
                 // if(i==j)continue;
-                int temp = nums[j];
-                nums[j] = nums[i];
-                nums[i]=temp;
                 
+                swap(i,j,nums);
                 i++;
                 j++;
             }
@@ -33,7 +31,13 @@ class Solution {
                 k--;
             }
         }
-        */
+        
+        
+    }
+    void swap (int i,int j,int[] nums){
+        int temp = nums[j];
+                nums[j] = nums[i];
+                nums[i]=temp;
         
     }
 }
