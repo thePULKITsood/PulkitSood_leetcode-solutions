@@ -1,24 +1,27 @@
 class Solution {
+    int dp[];
     public int coinChange(int[] coins, int amount) {
-        int dp [] = new int [amount +1];
-        Arrays.fill(dp,-1);
-        for (int c : coins)
-            if(c<=amount)
-            dp[c]=1;
+        dp=new int [amount+1];
+        int ans = func(coins,amount);
         
-        dp[0]=0;
-        for (int i=1;i<=amount ; i++)
-        {
-            if(dp[i]==1 )continue;
-            int ans = Integer.MAX_VALUE;
-            for (int c : coins){
-                if(i-c >0 && dp[i-c]>0){
-                    ans=Math.min(ans,dp[i-c]+1);
-                }
-            }
-            if(ans!=Integer.MAX_VALUE)
-                dp[i]=ans;
+        if(ans>=Integer.MAX_VALUE-1)
+            return -1;
+        
+        else return ans;
+        
+    }
+    int func (int []coins,int amount){
+        
+        if(amount==0)return 0;
+        int min = Integer.MAX_VALUE-1;
+        
+        if(amount<0)return min;
+        if(dp[amount]!=0)return dp[amount];
+        
+        for(int c : coins){
+            int ans = func(coins,amount-c);
+            min = Math.min(ans,min);    
         }
-        return dp[amount];
+        return dp[amount]=min+1;
     }
 }
