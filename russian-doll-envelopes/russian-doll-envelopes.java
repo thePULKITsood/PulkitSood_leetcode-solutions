@@ -1,33 +1,31 @@
 class Solution {
     public int maxEnvelopes(int[][] env) {
-        
-        Arrays.sort(env,(a,b)->{
-            if(a[0]==b[0])return a[1]-b[1];
-            else return a[0]-b[0];
+        Arrays.sort(env,(a,b)-> {
+            if(a[0]!=b[0])
+            return a[0]-b[0];
+            return b[1]-a[1];
         });
-       
-        int n=env.length;
-        int dp[]=new int [n];
-        
-        Arrays.fill(dp,1);
-        
-        for (int i=1;i<n;i++){
+        // Arrays.sort(env)
+            //sort in increasing order on basis of first and on basis of dec order on 2nd
             
-            int max =0;
-            
-            for (int j=i-1;j>=0;j--){
-                
-                if(env[i][0]>env[j][0] && env[i][1]>env[j][1])
-                    max=Math.max(dp[j],max);
+            //now 
+            int n = env.length;
+            int dp[]=new int [n];
+        int ans=0;
+        
+            for (int i=0;i<n;i++){
+                //we will find how many of the envoleps can this fit 
+                int max=0;
+                for (int j=0 ; j<i;j++){
+                   
+                    if(env[j][0]<env[i][0] && env[j][1]<env[i][1]){
+                        max = Math.max(max,dp[j]);
+                    }
+                    
+                }
+                dp[i]=max+1;
+                ans=Math.max(ans,dp[i]);
             }
-            dp[i]+=max;
-            
-        }
-        
-        int ans =1;
-        for (int i : dp)
-            ans=Math.max(i,ans);
-        
         return ans;
     }
 }
