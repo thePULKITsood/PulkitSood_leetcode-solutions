@@ -27,27 +27,36 @@ class Solution {
         
         inorder (root);
         
+        //close the doubly Linked List 
+        
         prev.right=head;
         head.left=prev;
+        
         return head;
         
     }
    void inorder (Node root){
-        if (root==null)return ;
+       if(root==null)return ;
         
+       // left 
         inorder(root.left);
         
-        if(head==null){
+       
+       //root
+        if(head==null)
             head=root;
-            
-        }
+            //comming here first time 
+        
+       
         if(prev!=null){
         prev.right = root;
         root.left = prev;
         }
        
-       
+       //updating the previous 
         prev = root ;
+       
+       //right 
         inorder (root.right);
         
         
