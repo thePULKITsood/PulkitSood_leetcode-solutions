@@ -1,60 +1,59 @@
 class MyHashSet {
-  private Bucket[] bucketArray;
-  private int keyRange;
-
-  /** Initialize your data structure here. */
-  public MyHashSet() {
-    keyRange = 769;
-    bucketArray = new Bucket[keyRange];
-    for (int i = 0; i < this.keyRange; ++i)
-      bucketArray[i] = new Bucket();
-  }
-
-  protected int _hash(int key) {
-    return (key % keyRange);
-  }
-
-  public void add(int key) {
-    int bucketIndex = _hash(key);
-    bucketArray[bucketIndex].insert(key);
-  }
-
-  public void remove(int key) {
-    int bucketIndex = _hash(key);
-    bucketArray[bucketIndex].delete(key);
-  }
-
-  /** Returns true if this set contains the specified element */
-  public boolean contains(int key) {
-    int bucketIndex = _hash(key);
-    return bucketArray[bucketIndex].exists(key);
-  }
-}
-
-
-class Bucket {
-  private LinkedList<Integer> container;
-
-  public Bucket() {
-    container = new LinkedList<Integer>();
-  }
-
-  public void insert(Integer key) {
-    int index = container.indexOf(key);
-    if (index == -1) {
-      container.addFirst(key);
+     
+    class Node {
+        int key;
+        Node (int k){
+            this.key=k;
+        }
     }
-  }
-
-  public void delete(Integer key) {
-    container.remove(key);
-      
-  }
-
-  public boolean exists(Integer key) {
-    int index = container.indexOf(key);
-    return (index != -1);
-  }
+    int prime;
+    LinkedList<Node> [] set ;
+    public MyHashSet() {
+        prime=769;
+        set = new LinkedList[prime];
+        
+        
+    }
+    
+    public void add(int key) {
+        int idx=key%prime;
+        if(set[idx]==null)
+            set[idx]=new LinkedList();
+            
+        for(Node n : set[idx]){
+            if(n.key==key)return;
+        }
+        set[idx].add(new Node (key));
+        
+    }
+    
+    public void remove(int key) {
+          int idx=key%prime;
+        if(set[idx]==null)
+        return;
+        
+        for(Node n : set[idx]){
+            if(n.key==key){
+                set[idx].remove(n);
+                return;
+            }
+        }
+        
+        
+    }
+    
+    public boolean contains(int key) {
+        int idx=key%prime;
+        if(set[idx]==null)
+        return false;
+        
+        
+         for(Node n : set[idx])
+            if(n.key==key)return true;
+        
+        return false;
+        
+    }
 }
 
 /**
