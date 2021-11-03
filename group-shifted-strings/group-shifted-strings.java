@@ -6,10 +6,10 @@ class Solution {
             
             if(s.length()==1)
             {
-                if(!map.containsKey("one"))
-                    map.put("one" ,new ArrayList() );
+                if(!map.containsKey("1"))
+                    map.put("1" ,new ArrayList() );
                 
-                map.get("one").add(s);
+                map.get("1").add(s);
             }
                 
             else{
