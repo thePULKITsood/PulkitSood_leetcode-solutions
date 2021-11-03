@@ -37,7 +37,7 @@ class Solution {
         
         while (q.size()!=0){
             
-             pair rem = q.getFirst();
+            pair rem = q.getFirst();
             pair head = q.getFirst();
             int size = q.size();
             
