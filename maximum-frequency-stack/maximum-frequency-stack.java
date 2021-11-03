@@ -1,4 +1,10 @@
 class FreqStack {
+    
+    // one map of freq 
+    
+    // one map of freq vs stack 
+    
+    
     Map<Integer,Integer> freq;
     Map<Integer,Stack<Integer>> grp ;
     int maxFreq;
