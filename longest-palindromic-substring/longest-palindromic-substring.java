@@ -1,21 +1,32 @@
 class Solution {
     public String longestPalindrome(String s) {
-     int n = s.length();
+        
+        int n = s.length();
         int max = 0;
+        
         int start =0;
         int end = 0;
+        
     boolean dp[][] = new boolean [n][n];
+        
         // i must move diagonally 
         
         for (int d = 0 ;d<n ; d++){
             for (int i = 0 ; d+i <n  ; i++){
+                
                 int j = d+i;
+                
                 if(d==0)
                     dp[i][j] = true;
+                
                 else if (d==1)
                     dp[i][j] = (s.charAt(i)==s.charAt(j));
+                
                 else 
                     dp[i][j] = dp[i+1][j-1]&&(s.charAt(i)==s.charAt(j));
+               
+                //for ito j to be plaindrome 
+                // t+1 to j-1 must be palindrime and i and j must be same 
                 
                 if(dp[i][j] &&(j-i+1 > max))
                 {
@@ -30,3 +41,15 @@ class Solution {
         
     }
 }
+    
+
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
