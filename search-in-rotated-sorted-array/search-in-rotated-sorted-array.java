@@ -37,3 +37,7 @@ class Solution {
         return -1;
     }
 }
+
+//basically jdo apa mid == target check kri da oodo we do as high = mid -1 and low<=high 
+
+//jdo nahi kari da then we do low<high   and high =mid;
