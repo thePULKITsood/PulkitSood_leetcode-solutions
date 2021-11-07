@@ -4,7 +4,6 @@ class Solution {
         int s = 0;
         
         int fl=firstList.length;
-        
         int sl=secondList.length;
         
         List<int[]> ans = new ArrayList();
@@ -21,10 +20,15 @@ class Solution {
         
                 int left = Math.max(first[0],second[0]);
                 int right = Math.min(first[1],second[1]);
+            // if right is big it means that we have a valid candidate 
+            
+            // if right is small and left is big it means that they do not overlap meanign 
+            // the right of first ends before the left of second
+            
             if (right>=left)
                 ans.add(new int[]{left,right});
             
-            if (first[1]>second[1])
+            if (first[1]>second[1]) // if first end is aage and seconds end is behind move s++
                 s++;
             else 
                 f++;
