@@ -1,9 +1,12 @@
 class Solution {
     
-    
+    // instead of using the boolean and using indexes to find the row and column use 
+    // hashsets -> cols 
+    // diagonal == row + col 
+    // anti diagonal = row-col;
     private  List<List<String>> solutions = new ArrayList<List<String >>();
     
-int size ;
+    int size ;
     public List<List<String>> solveNQueens(int n) {
         
  //          as arrays of boolena are initialised as false so 
