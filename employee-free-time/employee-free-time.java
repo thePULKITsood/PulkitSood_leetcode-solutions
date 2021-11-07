@@ -15,29 +15,25 @@ class Interval {
 
 class Solution {
     public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {
-        PriorityQueue<Interval> heap = new PriorityQueue<>((a,b)->a.start - b.start );
+        List<Interval> result = new ArrayList<>();
+        List<Interval> timeline = new ArrayList<>();
         
-        for (List<Interval> emp : schedule){
-            for (Interval i : emp){
-                heap.add(i);
+        schedule.forEach(e -> timeline.addAll(e));
+        
+        Collections.sort(timeline, ((a, b) -> a.start - b.start));
+      
+        Interval prev =  timeline.get(0);
+        
+        for (Interval i:timeline){
+            if(prev.end<i.start){
+                result.add(new Interval(prev.end,i.start));
+                prev=i;
+                
             }
+            else
+                prev.end=Math.max(i.end,prev.end);
         }
+        return result;
         
-        List<Interval> ans = new ArrayList();
-        
-        Interval prev = heap.remove();
-        while (!heap.isEmpty()){
-            
-            if(prev.end<heap.peek().start){
-                ans.add(new Interval(prev.end,heap.peek().start));
-                prev = heap.remove();
-            }
-            else 
-             prev.end = Math.max(prev.end,heap.remove().end);
-            
-            }
-        return ans;
-        }
+    }
 }
-        
-    
