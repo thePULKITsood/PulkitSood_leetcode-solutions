@@ -2,8 +2,7 @@ public class Codec {
 
 //     using preorder traversal - for both serialisatoin and decerialisatoin 
     
-    
-    // Encodes a tree to a single string.
+//    Encodes a tree to a single string.
     
     public String serialize(TreeNode root) {
         
@@ -30,7 +29,7 @@ public class Codec {
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
         
-         String [] arr =  data.split(",");
+        String [] arr =  data.split(",");
         index = 0;
         // al the difficuty was because of the static i need to make it 0 every time 
         
