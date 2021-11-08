@@ -14,36 +14,36 @@
  * }
  */
 class Solution {
-     TreeNode a = null, b = null, prev = null;
+     TreeNode x = null, y = null, prev = null;
 
-    public boolean recoverTree_(TreeNode root) {
+    public void  recoverTree_(TreeNode root) {
 
         if (root == null)
-            return true;
+            return ;
 
-        if (!recoverTree_(root.left))
-            return false;
+        recoverTree_(root.left);
+            
 
         if (prev != null && prev.val > root.val) {
-            b = root;
-            if (a == null)
-                a = prev;
-            else
-                return false;
+            y = root; // ik lata lag gya 
+            
+            if (x == null) // if a bhi nahi pta then a==prev ho jana as prev and root me panga hai
+                x = prev;
+           
         }
 
         prev = root;
-        if (!recoverTree_(root.right))
-            return false;
+        
+        recoverTree_(root.right);
+           
 
-        return true;
 
     }
 
     public void recoverTree(TreeNode root) {
         recoverTree_(root);
-        int temp = a.val;
-        a.val = b.val;
-        b.val = temp;
+        int temp = x.val;
+        x.val = y.val;
+        y.val = temp;
     }
 }
