@@ -14,32 +14,33 @@ public class Solution extends Relation {
         Stack <Integer> st = new Stack();
         
         st.push(0);
-        for (int i = 1 ; i <n ; i++ ){
+        
+        for (int i = 1 ; i <n ; i++ )
+        {
             int a= st.pop();
             int b = i;
             
             if (knows (a,b)) 
-            {
-                st.push(b);
-                continue;}
-            else {
-                st.push(a);
-            }
-            
+             st.push(b);
+          
+            else 
+            st.push(a);
+        
         }
+        
         if (st.size ()==0)
-            return 0;
+            return -1 ;
         
         else {
             //check if actually we have a celeb 
             
             int index = st.pop();
-            
             for (int i =0 ; i<n ; i++){
-                if (i==index) continue;
-                if (knows(index , i ) == false && knows (i ,index ) == true)
+               
+                if (i == index)
                     continue;
-                return -1;
+                if( (knows(index, i) || !knows(i, index)))
+            return -1;
             }
             return index;
         }
