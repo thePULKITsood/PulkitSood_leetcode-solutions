@@ -17,21 +17,24 @@ class Solution {
         }
         
         PriorityQueue<Integer> heap = new PriorityQueue((a,b)-> count.get(a) - count.get(b));
+        // min heap so that i can remove the smallest element with ease ! 
         
         for (int n : count.keySet()){
+            
                heap.add(n);
         if (heap.size() > k) heap.poll();  
+            
         }
         
         
         int ans[] = new int [k];
+        
         int i = k-1;
-        while (i>=0){
-        ans[i] = heap.remove();
+        
+        while (i>=0)
+        ans[i--] = heap.remove();
             
-            i--;
-            
-        }
+        
         return ans;
         
         
