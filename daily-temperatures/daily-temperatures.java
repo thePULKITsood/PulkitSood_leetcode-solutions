@@ -6,10 +6,10 @@ class Solution {
         
         int ans [] = new int [n];
         
-        st.push( n-1 );
+        // st.push( n-1 );
         // ans[n-1] = 0;
         
-        for (int i = n-2 ; i>=  0 ; i--)
+        for (int i = n-1 ; i>=  0 ; i--)
         {
             while (st.size () >0  && t[i] >=t[st.peek()])
                 st.pop();
