@@ -1,15 +1,12 @@
 class Solution {
     public int hammingDistance(int x, int y) {
-        return findzeros(x^y);
-        
-    }
-    int findzeros(int a){
-        int zeros=0;
-        while(a>0){
-            if(a%2==1)
-                zeros++;
-            a/=2;
+        int result = x^y;
+        int ans=0;
+        while (result>0){
+            ans+=1;
+            result = result & (result-1);
         }
-        return zeros;
+        return ans;
+        
     }
 }
