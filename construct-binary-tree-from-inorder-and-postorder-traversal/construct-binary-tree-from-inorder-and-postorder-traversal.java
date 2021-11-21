@@ -40,3 +40,26 @@ class Solution {
         return root;
     }
 }
+
+
+
+// class Solution {
+//     int p;
+//     Map<Integer, Integer> map = new HashMap<>();
+//     public TreeNode buildTree(int[] inorder, int[] postorder) {
+//         p = inorder.length - 1;
+//         for (int i = 0; i < inorder.length; i++) map.put(inorder[i], i);
+//         return helper(postorder, 0, inorder.length - 1);
+//     }
+    
+//     private TreeNode helper(int[] postorder, int l, int r) {
+//         if (l > r) return null;
+        
+//         int value = postorder[p--];
+//         int i = map.get(value);
+//         TreeNode root = new TreeNode(value);
+//         root.right = helper(postorder, i + 1, r);
+//         root.left = helper(postorder, l, i - 1);
+//         return root;
+//     }
+// }
