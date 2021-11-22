@@ -21,12 +21,12 @@ class Solution {
         {
             //0child -> leaf node 
             
-            if(root.left==null && root.right ==null)return root= null;
+            if(root.left==null && root.right ==null)return root = null;
             
             //2 child only
             
             
-           else if(root.left!=null && root.right !=null){
+           else if(root.left != null && root.right != null){
                
                 TreeNode left_biggest= find(root.left);
                 //basically finding the lefts _rightMost
