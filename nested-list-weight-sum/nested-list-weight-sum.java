@@ -28,25 +28,34 @@
  */
 class Solution {
     public int depthSum(List<NestedInteger> nestedList) {
-        return dfs(nestedList,1);
-//         solution 1 using dfs 
         
+//         bfs solution 
         
-    }
-    int dfs (List<NestedInteger> nestedList,int depth ){
-        int total = 0;
+      LinkedList <NestedInteger> q= new LinkedList();
         
-        for (NestedInteger n : nestedList )
-        {
-            if (n.isInteger())
-            {
-                total +=  n.getInteger() * depth;
+        q.addAll(nestedList);
+        
+        int ans = 0 ;
+        int level = 1;
+        while (q.size()!=0){
+            
+            int size = q.size();
+            while (size --> 0 ){
+                NestedInteger n = q.removeFirst();
+                
+                if(n.isInteger())
+                    ans+= n.getInteger()*level;
+                
+                else
+                    q.addAll(n.getList());
+                
+                
             }
-            else 
-            {
-                total+= dfs(n.getList(),depth+1 );
-            }
+            level++;
         }
-        return total;
+        return ans;
+        // in graph we used to add the children here we will add the first int and we will add the next int when done 
+        
+        
     }
 }
