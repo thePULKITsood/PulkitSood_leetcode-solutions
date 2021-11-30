@@ -46,8 +46,8 @@ class Solution {
                     
                      int size = left.size + right.size + 1;
                      ans=Math.max(size,ans);
+                  
                     int min = Math.min(left.min,root.val);
-                    
                     int max = Math.max(right.max,root.val);
                     
                     return new pair(min,max,size,true);
