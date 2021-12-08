@@ -42,7 +42,7 @@ class Solution {
         
         while (q.size()!=0){
             int size = q.size();
-               int thislevel=0;
+            int thislevel=0;
             while (size--> 0){
          
             NestedInteger n = q.removeFirst();
