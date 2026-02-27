@@ -54,3 +54,14 @@ Although this repository primarily serves as my personal reference, **issues and
 - [LinkedIn](https://www.linkedin.com/in/the-pulkit-sood/)  
 
 Stay curious and happy coding! 💻✨
+<!---LeetCode Topics Start-->
+# LeetCode Topics
+## Array
+|  |
+| ------- |
+| [0001-two-sum](https://github.com/thePULKITsood/PulkitSood_leetcode-solutions/tree/master/0001-two-sum) |
+## Hash Table
+|  |
+| ------- |
+| [0001-two-sum](https://github.com/thePULKITsood/PulkitSood_leetcode-solutions/tree/master/0001-two-sum) |
+<!---LeetCode Topics End-->
