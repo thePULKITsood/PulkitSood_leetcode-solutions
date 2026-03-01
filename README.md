@@ -64,4 +64,12 @@ Stay curious and happy coding! 💻✨
 |  |
 | ------- |
 | [0001-two-sum](https://github.com/thePULKITsood/PulkitSood_leetcode-solutions/tree/master/0001-two-sum) |
+## String
+|  |
+| ------- |
+| [1689-partitioning-into-minimum-number-of-deci-binary-numbers](https://github.com/thePULKITsood/PulkitSood_leetcode-solutions/tree/master/1689-partitioning-into-minimum-number-of-deci-binary-numbers) |
+## Greedy
+|  |
+| ------- |
+| [1689-partitioning-into-minimum-number-of-deci-binary-numbers](https://github.com/thePULKITsood/PulkitSood_leetcode-solutions/tree/master/1689-partitioning-into-minimum-number-of-deci-binary-numbers) |
 <!---LeetCode Topics End-->
